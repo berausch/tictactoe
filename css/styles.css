@@ -10,3 +10,11 @@
 .contact:hover {
   text-decoration: underline;
 }
+
+.young {
+  display: none;
+}
+
+#batman-sucks {
+  display: none;
+}
