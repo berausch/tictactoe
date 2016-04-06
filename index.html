@@ -6,57 +6,48 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-1.12.2.js"></script>
     <script src="js/scripts.js"></script>
-    <title>Address book</title>
+    <title>Tic Tac Toe</title>
 </head>
   <body>
     <div class="container">
-      <h1>Address book</h1>
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Add a contact:</h2>
-          <form id="movie-ticket">
-            <label for="movie-title">Which Movie would you like to see?</label>
-            <select class="form-control" id="movie-title">
-                <option value="0">Batman v Superman</option>
-                <option value="1">Whiskey Tango Foxtrot</option>
-                <option value="2">The Divergent Series: Allegiant</option>
-                <option value="3">Zootopia</option>
-                <option value="4">Deadpool</option>
-                <option value="5">Kung Foo Panda 3</option>
-                <option value="6">10 Cloverfield Lane</option>
-            </select>
-            <label for="movie-time">When would you like to see your Movie?</label>
-            <select class="form-control" id="movie-time">
-                <option value="0">Before noon</option>
-                <option value="1">Afternoon</option>
-                <option value="2">Night</option>
-            </select>
-            <div class="form-group">
-              <label for="age">How old are you? (Not Creepy at all right?)</label>
-              <input class="form-control" id="age" type="text" pattern="\d{2}">
-            </div>
-            <button type="submit" class="btn">Submit</button>
-          </form>
-        </div>
-        <div class="col-md-6">
-        <h2>Movie Price</h2>
-          <h2 class="price"><span id="price"></span></h2>
-          <div class="young">
-            <h3>You are too young to see this movie "officially", you could hypothetically buy a ticket to Kung Foo Panda 3 and sneak into this movie, but we can not legally recommend that...</h3>
+      <h1>Tic Tac Toe</h1>
+        <h2>Ninja Star or Herring: Choose your weapon with which you will face your enemy!</h2>
+        <form id="player">
+          <div class="form-group">
+            <label for="player-1-name">What's your name challenger 1?</label>
+            <input type="text" class="form-control" id="player-1-name" value="Brittany">
           </div>
-          <form id="batman-sucks">
-            <h3>How about you see Kung Foo Panda 3?</h3>
-            <h4>That sounds like a great idea right?</h4>
-            <label for="movie-time">Are you sure you realllly want to see Batman V Superman?</label>
-            <select class="form-control" id="movie-time">
-                <option value="0">No, you're right. I don't know what I was thinking! I must have had a temporary lapse of good judgement. I think I'll see Kung Fu Panda 3</option>
-                <option value="1">No, I put Batman for mistake, I want to see Kung Fu Panda.</option>
-                <option class="batman-option" value="2">I guess I won't listen to your superior judgement. Batman v Superman please</option>
-            </select>
+          <label for="player-1-weapon">Choose your weapon:</label>
+          <select class="form-control" id="player-1-weapon">
+              <option value="X">Ninja Star</option>
+              <option value="O">Herring</option>
+          </select>
+          <div class="form-group">
+            <label for="player-2-name">What's your name challenger 2?</label>
+            <input type="text" class="form-control" id="player-2-name" value="Nick">
+          </div>
           <button type="submit" class="btn">Submit</button>
         </form>
+        <div class="table">
+            <table id="ticTac">
+              <tr id="r1">
+                <td class="c1" id="1a"><span class="1a">1A</span></td>
+                <td class="c2" id="1b"><span class="1b">1B</span></td>
+                <td class="c3" id="1c"><span class="1c">1C</span></td>
+              </tr>
+              <tr id="r2">
+                <td class="c1" id="2a"><span class="2a">2A</span></td>
+                <td class="c2" id="2b"><span class="2b">2B</span></td>
+                <td class="c3" id="2c"><span class="2c">2C</span></td>
+              </tr>
+              <tr id="r3">
+                <td class="c1" id="3a"><span class="3a">3A</span></td>
+                <td class="c2" id="3b"><span class="3b">3B</span></td>
+                <td class="c3" id="3c"><span class="3c">3C</span></td>
+              </tr>
         </div>
-      </div>
+
+
     </div>
   </body>
 </html>

@@ -1,20 +1,30 @@
-#show-contact {
-  display: none;
+ td {
+   height: 100px;
+   width: 100px;
+   font-size: 15px;
+   text-align: center;
+ }
+#r1 {
+  border-bottom: 1px solid black;
+}
+#r2 {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }
 
-.contact {
-  cursor: pointer;
-  color: #0088cc;
+#r3 {
+  border-top: 1px solid black;
 }
 
-.contact:hover {
-  text-decoration: underline;
+.c1 {
+  border-right: 1px solid black;
 }
 
-.young {
-  display: none;
+.c2 {
+  border-right: 1px solid black;
+  border-left: 1px solid black;
 }
 
-#batman-sucks {
-  display: none;
+.c3 {
+  border-left: 1px solid black;
 }
