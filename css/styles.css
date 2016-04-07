@@ -1,9 +1,13 @@
- td {
-   height: 100px;
-   width: 100px;
-   font-size: 15px;
-   text-align: center;
- }
+td {
+  height: 200px;
+  width: 200px;
+  font-size: 15px;
+  text-align: center;
+}
+img {
+  height: 200px;
+  width: 200px;
+}
 #r1 {
   border-bottom: 1px solid black;
 }

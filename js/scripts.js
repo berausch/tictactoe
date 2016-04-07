@@ -6,8 +6,8 @@ function Player(name, weapon, number) {
 }
 function Board(row1, row2, row3) {
     this.row1 = ["1a", "1b", "1c"];
-    this.row2 = ["2a", "2b", "2c"]];
-    this.row3 = ["3a", "3b", "3c"]];
+    this.row2 = ["2a", "2b", "2c"];
+    this.row3 = ["3a", "3b", "3c"];
 }
 
 
@@ -46,16 +46,11 @@ $(document).ready(function() {
         event.preventDefault();
 
         var inputtedName1 = $("#player-1-name").val();
-        var inputtedWeapon1 = $("#player-1-weapon").val();
         var inputtedName2 = $("#player-2-name").val();
         var inputtedWeapon2 = "";
-        if (inputtedWeapon1 === "X") {
-          inputtedWeapon2 = "O"
-        } else {
-          inputtedWeapon2 = "X"
-        }
-        var newPlayer1 = new Player(inputtedName1, inputtedWeapon1, 1);
-        var newPlayer2 = new Player(inputtedName2, inputtedWeapon2, 2);
+
+        var newPlayer1 = new Player(inputtedName1, "X", 1);
+        var newPlayer2 = new Player(inputtedName2, "O", 2);
 
         newBoard = new Board("row1", "row2", "row3");
 
@@ -68,7 +63,11 @@ $(document).ready(function() {
           }
           console.log(currentPlayer);
           newBoard.row1[0]= currentPlayer.weapon;
-          $("#1a").text(currentPlayer.weapon);
+          if(currentPlayer.weapon === "X"){
+            $("#1a").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+          } else if (currentPlayer.weapon === "O"){
+            $("#1a").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+          }
           console.log(newBoard);
         });
         $(".1b").click(function(){
@@ -80,7 +79,11 @@ $(document).ready(function() {
           }
           console.log(currentPlayer);
           newBoard.row1[1]= currentPlayer.weapon;
-          $("#1b").text(currentPlayer.weapon);
+          if(currentPlayer.weapon === "X"){
+            $("#1b").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+          } else if (currentPlayer.weapon === "O"){
+            $("#1b").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+          }
           console.log(newBoard);
         });
         $(".1c").click(function(){
@@ -92,7 +95,11 @@ $(document).ready(function() {
           }
           console.log(currentPlayer);
           newBoard.row1[2]= currentPlayer.weapon;
-          $("#1c").text(currentPlayer.weapon);
+          if(currentPlayer.weapon === "X"){
+            $("#1c").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+          } else if (currentPlayer.weapon === "O"){
+            $("#1c").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+          }
           console.log(newBoard);
         });
         $(".2a").click(function(){
@@ -104,7 +111,11 @@ $(document).ready(function() {
           }
           console.log(currentPlayer);
           newBoard.row2[0]= currentPlayer.weapon;
-          $("#2a").text(currentPlayer.weapon);
+          if(currentPlayer.weapon === "X"){
+            $("#2a").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+          } else if (currentPlayer.weapon === "O"){
+            $("#2a").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+          }
         });
         $(".2b").click(function(){
           currentPlayer = newBoard.playerTurn();
@@ -115,7 +126,11 @@ $(document).ready(function() {
           }
           console.log(currentPlayer);
           newBoard.row2[1]= currentPlayer.weapon;
-          $("#2b").text(currentPlayer.weapon);
+          if(currentPlayer.weapon === "X"){
+            $("#2b").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+          } else if (currentPlayer.weapon === "O"){
+            $("#2b").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+          }
         });
         $(".2c").click(function(){
           currentPlayer = newBoard.playerTurn();
@@ -126,7 +141,11 @@ $(document).ready(function() {
           }
           console.log(currentPlayer);
           newBoard.row2[2]= currentPlayer.weapon;
-          $("#2c").text(currentPlayer.weapon);
+          if(currentPlayer.weapon === "X"){
+            $("#2c").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+          } else if (currentPlayer.weapon === "O"){
+            $("#2c").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+          }
         });
         $(".3a").click(function(){
           currentPlayer = newBoard.playerTurn();
@@ -137,7 +156,11 @@ $(document).ready(function() {
           }
           console.log(currentPlayer);
           newBoard.row3[0]= currentPlayer.weapon;
-          $("#3a").text(currentPlayer.weapon);
+          if(currentPlayer.weapon === "X"){
+            $("#3a").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+          } else if (currentPlayer.weapon === "O"){
+            $("#3a").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+          }
         });
         $(".3b").click(function(){
           currentPlayer = newBoard.playerTurn();
@@ -148,7 +171,11 @@ $(document).ready(function() {
           }
           console.log(currentPlayer);
           newBoard.row3[1]= currentPlayer.weapon;
-          $("#3b").text(currentPlayer.weapon);
+          if(currentPlayer.weapon === "X"){
+            $("#3b").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+          } else if (currentPlayer.weapon === "O"){
+            $("#3b").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+          }
         });
         $(".3c").click(function(){
           currentPlayer = newBoard.playerTurn();
@@ -159,7 +186,11 @@ $(document).ready(function() {
           }
           console.log(currentPlayer);
           newBoard.row3[2]= currentPlayer.weapon;
-          $("#3c").text(currentPlayer.weapon);
+          if(currentPlayer.weapon === "X"){
+            $("#3c").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+          } else if (currentPlayer.weapon === "O"){
+            $("#3c").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+          }
         });
         console.log(newBoard);
     });
