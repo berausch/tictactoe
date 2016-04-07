@@ -12,6 +12,7 @@ function Board(row1, row2, row3) {
 
 
 var currentPlayer;
+var tieCheck;
 
 Board.prototype.playerTurn = function () {
   var xCount = 0;
@@ -35,12 +36,64 @@ if(newBoard.row3[i] === "X"){
 }
 console.log(xCount);
 console.log(oCount);
+if((xCount + oCount) === 9){
+  return "tie";
+}
+ else{
 if (xCount === oCount) {
   return true;
 } else if (xCount > oCount) {
   return false;
-}
+}}
 };
+var winner = "";
+var victory = "";
+var victory1 = "";
+var victory3 = "";
+Board.prototype.winner = function () {
+  var victory = "";
+  var victoriousPlayer = "";
+  if(newBoard.row1[0] === newBoard.row1[1] && newBoard.row1[1] === newBoard.row1[2]){
+    victory = "r1"
+    victoriousPlayer = newBoard.row1[0];
+  }
+  if(newBoard.row2[0] === newBoard.row2[1] && newBoard.row2[1] === newBoard.row2[2]){
+    victory = "r2"
+    victoriousPlayer = newBoard.row1[0];
+  }
+  if(newBoard.row3[0] === newBoard.row3[1] && newBoard.row3[1] === newBoard.row3[2]){
+    victory = "r3"
+    victoriousPlayer = newBoard.row1[0];
+  }
+for (var i = 0; i < 3; i++){
+      if (newBoard.row1[i] === newBoard.row2[i] && newBoard.row2[i] === newBoard.row3[i]) {
+    victory =  "c" + [i+1]
+    victoriousPlayer = newBoard.row1[i-1];
+  }
+}
+if(newBoard.row1[0] === newBoard.row2[1] && newBoard.row2[1]=== newBoard.row3[2]){
+  victory = "d1";
+  victoriousPlayer = newBoard.row1[0];
+}
+if(newBoard.row1[2] === newBoard.row2[1] && newBoard.row2[1]=== newBoard.row3[0]){
+  victory = "d2";
+  victoriousPlayer = newBoard.row1[2];
+}
+
+  return victory;
+  if(victory !== ""){
+  console.log(victory);
+  if(victoriousPlayer === "X"){
+    winner = newPlayer1
+  } else if(victoriousPlayer === "O")
+    winner = newPlayer2
+  }
+  console.log(winner);
+}
+
+
+
+
 $(document).ready(function() {
       $("#player").submit(function(event) {
         event.preventDefault();
@@ -54,145 +107,213 @@ $(document).ready(function() {
 
         newBoard = new Board("row1", "row2", "row3");
 
+        victory = newBoard.winner()
+        var current = function(player){
+          console.log(player);
+
+        }
+
+        var victory2 = function(victory){
+          console.log(victory1);
+          if(victory !== ""){
+            $("."+ victory).addClass("win")
+            $(".table1").empty();
+          }};
+
+          var alerty = function(player, victory, tie){
+            if(tie === "tie"){
+              $("#headlines").empty().append("It's a Tie! Refresh the page and try again!")
+            } else{
+            if(player === newPlayer1){
+              if(victory !== ""){
+                $("#headlines").empty().append(newPlayer1.name + " has dominated! Bow down " + newPlayer2.name);
+              } else {
+              $("#headlines").empty().append(newPlayer2.name + "'s Turn, Place a Herring");
+            }} else if(player === newPlayer2){
+                  if(victory !== ""){
+                    $("#headlines").empty().append(newPlayer2.name + " has dominated! Bow down " + newPlayer1.name);
+                  } else {
+              $("#headlines").empty().append(newPlayer1.name + "'s Turn, Place a Ninja Star");
+            }}}};
+
         $(".1a").click(function(){
           currentPlayer = newBoard.playerTurn();
           if(currentPlayer === true){
-            currentPlayer = newPlayer1
-          } else if(currentPlayer === false){
-            currentPlayer = newPlayer2
+            currentPlayer = newPlayer1;
+          }  else if(currentPlayer === false){
+            currentPlayer = newPlayer2;
           }
-          console.log(currentPlayer);
           newBoard.row1[0]= currentPlayer.weapon;
+          tieCheck = newBoard.playerTurn();
           if(currentPlayer.weapon === "X"){
-            $("#1a").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+            $("#1a").empty().removeClass("table1").append("<img src='ninja.png' alt='picture of a ninja star'>")
           } else if (currentPlayer.weapon === "O"){
-            $("#1a").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+            $("#1a").empty().removeClass("table1").append("<img src='herring.jpg' alt='picture of a herring'>")
           }
-          console.log(newBoard);
+          victory2(newBoard.winner());
+          alerty(currentPlayer, newBoard.winner(), tieCheck);
         });
         $(".1b").click(function(){
           currentPlayer = newBoard.playerTurn();
           if(currentPlayer === true){
-            currentPlayer = newPlayer1
+            currentPlayer = newPlayer1;
           } else if(currentPlayer === false){
-            currentPlayer = newPlayer2
+            currentPlayer = newPlayer2;
           }
           console.log(currentPlayer);
           newBoard.row1[1]= currentPlayer.weapon;
+          tieCheck = newBoard.playerTurn();
+          console.log(tieCheck);
           if(currentPlayer.weapon === "X"){
-            $("#1b").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+            $("#1b").empty().removeClass("table1").append("<img src='ninja.png' alt='picture of a ninja star'>")
           } else if (currentPlayer.weapon === "O"){
-            $("#1b").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+            $("#1b").empty().removeClass("table1").append("<img src='herring.jpg' alt='picture of a herring'>")
           }
-          console.log(newBoard);
+          victory2(newBoard.winner());
+          alerty(currentPlayer, newBoard.winner(), tieCheck);
+
         });
         $(".1c").click(function(){
           currentPlayer = newBoard.playerTurn();
           if(currentPlayer === true){
-            currentPlayer = newPlayer1
+            currentPlayer = newPlayer1;
           } else if(currentPlayer === false){
-            currentPlayer = newPlayer2
+            currentPlayer = newPlayer2;
           }
           console.log(currentPlayer);
           newBoard.row1[2]= currentPlayer.weapon;
+          tieCheck = newBoard.playerTurn();
+          console.log(tieCheck);
           if(currentPlayer.weapon === "X"){
-            $("#1c").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+            $("#1c").empty().removeClass("table1").append("<img src='ninja.png' alt='picture of a ninja star'>")
           } else if (currentPlayer.weapon === "O"){
-            $("#1c").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+            $("#1c").empty().removeClass("table1").append("<img src='herring.jpg' alt='picture of a herring'>")
           }
-          console.log(newBoard);
+
+          victory2(newBoard.winner());
+          alerty(currentPlayer, newBoard.winner(), tieCheck);
+
         });
         $(".2a").click(function(){
           currentPlayer = newBoard.playerTurn();
           if(currentPlayer === true){
-            currentPlayer = newPlayer1
+            currentPlayer = newPlayer1;
           } else if(currentPlayer === false){
-            currentPlayer = newPlayer2
+            currentPlayer = newPlayer2;
           }
           console.log(currentPlayer);
           newBoard.row2[0]= currentPlayer.weapon;
+          tieCheck = newBoard.playerTurn();
+          console.log(tieCheck);
           if(currentPlayer.weapon === "X"){
-            $("#2a").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+            $("#2a").empty().removeClass("table1").append("<img src='ninja.png' alt='picture of a ninja star'>")
           } else if (currentPlayer.weapon === "O"){
-            $("#2a").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+            $("#2a").empty().removeClass("table1").append("<img src='herring.jpg' alt='picture of a herring'>")
           }
+
+          victory2(newBoard.winner());
+          alerty(currentPlayer, newBoard.winner(), tieCheck);
         });
         $(".2b").click(function(){
           currentPlayer = newBoard.playerTurn();
           if(currentPlayer === true){
-            currentPlayer = newPlayer1
+            currentPlayer = newPlayer1;
           } else if(currentPlayer === false){
-            currentPlayer = newPlayer2
+            currentPlayer = newPlayer2;
           }
           console.log(currentPlayer);
           newBoard.row2[1]= currentPlayer.weapon;
+          tieCheck = newBoard.playerTurn();
+          console.log(tieCheck);
           if(currentPlayer.weapon === "X"){
-            $("#2b").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+            $("#2b").empty().removeClass("table1").append("<img src='ninja.png' alt='picture of a ninja star'>")
           } else if (currentPlayer.weapon === "O"){
-            $("#2b").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+            $("#2b").empty().removeClass("table1").append("<img src='herring.jpg' alt='picture of a herring'>")
           }
+
+          victory2(newBoard.winner());
+          alerty(currentPlayer, newBoard.winner(), tieCheck);
         });
         $(".2c").click(function(){
           currentPlayer = newBoard.playerTurn();
           if(currentPlayer === true){
-            currentPlayer = newPlayer1
+            currentPlayer = newPlayer1;
           } else if(currentPlayer === false){
-            currentPlayer = newPlayer2
+            currentPlayer = newPlayer2;
           }
           console.log(currentPlayer);
           newBoard.row2[2]= currentPlayer.weapon;
+          tieCheck = newBoard.playerTurn();
+          console.log(tieCheck);
           if(currentPlayer.weapon === "X"){
-            $("#2c").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+            $("#2c").empty().removeClass("table1").append("<img src='ninja.png' alt='picture of a ninja star'>")
           } else if (currentPlayer.weapon === "O"){
-            $("#2c").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+            $("#2c").empty().removeClass("table1").append("<img src='herring.jpg' alt='picture of a herring'>")
           }
+
+          victory2(newBoard.winner());
+          alerty(currentPlayer, newBoard.winner(), tieCheck);
         });
         $(".3a").click(function(){
           currentPlayer = newBoard.playerTurn();
           if(currentPlayer === true){
-            currentPlayer = newPlayer1
+            currentPlayer = newPlayer1;
           } else if(currentPlayer === false){
-            currentPlayer = newPlayer2
+            currentPlayer = newPlayer2;
           }
           console.log(currentPlayer);
           newBoard.row3[0]= currentPlayer.weapon;
+          tieCheck = newBoard.playerTurn();
+          console.log(tieCheck);
           if(currentPlayer.weapon === "X"){
-            $("#3a").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+            $("#3a").empty().removeClass("table1").append("<img src='ninja.png' alt='picture of a ninja star'>")
           } else if (currentPlayer.weapon === "O"){
-            $("#3a").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+            $("#3a").empty().removeClass("table1").append("<img src='herring.jpg' alt='picture of a herring'>")
           }
+
+          victory2(newBoard.winner());
+          alerty(currentPlayer, newBoard.winner(), tieCheck);
         });
         $(".3b").click(function(){
           currentPlayer = newBoard.playerTurn();
           if(currentPlayer === true){
-            currentPlayer = newPlayer1
+            currentPlayer = newPlayer1;
           } else if(currentPlayer === false){
-            currentPlayer = newPlayer2
+            currentPlayer = newPlayer2;
           }
           console.log(currentPlayer);
           newBoard.row3[1]= currentPlayer.weapon;
+          tieCheck = newBoard.playerTurn();
+          console.log(tieCheck);
           if(currentPlayer.weapon === "X"){
-            $("#3b").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+            $("#3b").empty().removeClass("table1").append("<img src='ninja.png' alt='picture of a ninja star'>")
           } else if (currentPlayer.weapon === "O"){
-            $("#3b").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+            $("#3b").empty().removeClass("table1").append("<img src='herring.jpg' alt='picture of a herring'>")
           }
+
+          victory2(newBoard.winner());
+          alerty(currentPlayer, newBoard.winner(), tieCheck);
         });
         $(".3c").click(function(){
           currentPlayer = newBoard.playerTurn();
           if(currentPlayer === true){
-            currentPlayer = newPlayer1
+            currentPlayer = newPlayer1;
           } else if(currentPlayer === false){
-            currentPlayer = newPlayer2
+            currentPlayer = newPlayer2;
           }
           console.log(currentPlayer);
           newBoard.row3[2]= currentPlayer.weapon;
+          tieCheck = newBoard.playerTurn();
+          console.log(tieCheck);
           if(currentPlayer.weapon === "X"){
-            $("#3c").empty().append("<img src='ninja.png' alt='picture of a ninja star'>")
+            $("#3c").empty().removeClass("table1").append("<img src='ninja.png' alt='picture of a ninja star'>")
           } else if (currentPlayer.weapon === "O"){
-            $("#3c").empty().append("<img src='herring.jpg' alt='picture of a herring'>")
+            $("#3c").empty().removeClass("table1").append("<img src='herring.jpg' alt='picture of a herring'>")
           }
+
+          victory2(newBoard.winner());
+          alerty(currentPlayer, newBoard.winner(), tieCheck);
         });
-        console.log(newBoard);
     });
 
 
