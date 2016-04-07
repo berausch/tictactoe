@@ -97,14 +97,18 @@ if(newBoard.row1[2] === newBoard.row2[1] && newBoard.row2[1]=== newBoard.row3[0]
 $(document).ready(function() {
       $("#player").submit(function(event) {
         event.preventDefault();
-
+        $("#player").hide();
+        $(".table").show();
         var inputtedName1 = $("#player-1-name").val();
         var inputtedName2 = $("#player-2-name").val();
         var inputtedWeapon2 = "";
+        console.log(inputtedName1);
+        console.log(inputtedName2);
 
         var newPlayer1 = new Player(inputtedName1, "X", 1);
         var newPlayer2 = new Player(inputtedName2, "O", 2);
-
+        console.log(newPlayer1);
+        console.log(newPlayer2);
         newBoard = new Board("row1", "row2", "row3");
 
         victory = newBoard.winner()
@@ -121,9 +125,9 @@ $(document).ready(function() {
           }};
 
           var alerty = function(player, victory, tie){
-            if(tie === "tie"){
+            if(tie === "tie" && victory === ""){
               $("#headlines").empty().append("It's a Tie! Refresh the page and try again!")
-            } else{
+            } else {
             if(player === newPlayer1){
               if(victory !== ""){
                 $("#headlines").empty().append(newPlayer1.name + " has dominated! Bow down " + newPlayer2.name);
@@ -315,6 +319,4 @@ $(document).ready(function() {
           alerty(currentPlayer, newBoard.winner(), tieCheck);
         });
     });
-
-
 });

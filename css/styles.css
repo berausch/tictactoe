@@ -5,6 +5,9 @@ td {
   text-align: center;
   color: white;
 }
+.table{
+  display: none;
+}
 
 .hovery:hover {
   cursor: pointer;
@@ -41,21 +44,21 @@ img {
   border-left: 1px solid black;
 }
 .win {
-border: 5px solid red;
+  border: 5px dotted blue
   /*animation-name: colorChange;
-  animation-iteration-count: infinite;*/
+  /*animation-iteration-count: infinite;*/
 }
 @keyframes colorChange {
-  25% {
+  15%, 100%  {
     border: 5px solid red;
   }
-  50% {
+  40% {
     border: 5px dotted blue;
   }
-  75% {
+  65% {
     border: 5px solid yellow;
   }
-  100% {
-    border: 5px dashed green;
+  {
+  90%  {border: 5px dashed green;
   }
 }
