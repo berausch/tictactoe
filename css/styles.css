@@ -7,10 +7,30 @@ td {
 }
 .table{
   display: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
-
+table {
+  margin-top: 100px;
+}
+body {
+  text-align: center;
+}
 .hovery:hover {
   cursor: pointer;
+}
+h1 {
+  font-size: 50px;
+}
+label {
+  font-size: 20px;
+}
+
+#headlines {
+  text-align: center;
+  border-bottom: 5px solid #ebe6a0;
+  padding-bottom: 10px;
 }
 
 img {
@@ -44,21 +64,22 @@ img {
   border-left: 1px solid black;
 }
 .win {
-  border: 5px dotted blue
-  /*animation-name: colorChange;
-  /*animation-iteration-count: infinite;*/
+  border: 5px dotted blue;
+  animation-name: colorChange;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
 @keyframes colorChange {
   15%, 100%  {
-    border: 5px solid red;
+    border: 5px solid #7be89a;
   }
   40% {
-    border: 5px dotted blue;
+    border: 5px dotted #ffac80;
   }
   65% {
-    border: 5px solid yellow;
+    border: 5px solid #ebe6a0;
   }
   {
-  90%  {border: 5px dashed green;
+  90%  {border: 5px dashed #82ffe8;
   }
 }

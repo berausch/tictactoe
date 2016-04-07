@@ -110,11 +110,10 @@ $(document).ready(function() {
         console.log(newPlayer1);
         console.log(newPlayer2);
         newBoard = new Board("row1", "row2", "row3");
-
+        $("#headlines").empty().append(newPlayer1.name + "'s Turn, Place a Ninja Star");
         victory = newBoard.winner()
         var current = function(player){
           console.log(player);
-
         }
 
         var victory2 = function(victory){
